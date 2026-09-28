@@ -1,150 +1,265 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="fr">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>AdRush — Video Ad Accelerator</title>
-	<meta name="generator" content="LibreOffice 24.8.0.3 (Windows)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2026-09-28T23:20:22.469000000"/>
-	<meta name="description" content="AdRush accélère les interruptions publicitaires vidéo, passe les annonces lorsque possible et masque certains emplacements promotionnels."/>
-	<meta name="" content=""/>
-	<meta name="viewport" content="width=device-width,initial-scale=1"/>
-	<style type="text/css">
-		h1 { line-height: 155% }
-		h1.cjk { font-family: "Inter", "system-ui", "apple-system", "BlinkMacSystemFont", "Segoe UI", sans-serif }
-		h1.ctl { font-family: "Inter", "system-ui", "apple-system", "BlinkMacSystemFont", "Segoe UI", sans-serif }
-		p { font-family: "Inter", "system-ui", "apple-system", "BlinkMacSystemFont", "Segoe UI", sans-serif; line-height: 155% }
-		p.lead { color: #cbd1da; font-family: "Inter", "system-ui", "apple-system", "BlinkMacSystemFont", "Segoe UI", sans-serif; font-size: 15pt }
-		h2 { line-height: 155% }
-		h2.cjk { font-family: "NSimSun" }
-		h2.ctl { font-family: "Lucida Sans" }
-		h3 { line-height: 155% }
-		h3.cjk { font-family: "NSimSun" }
-		h3.ctl { font-family: "Lucida Sans" }
-		a:link { text-decoration: none }
-		a:visited { text-decoration: none }
-	</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AdRush — Video Ad Accelerator</title>
+  <meta name="description" content="AdRush accélère les interruptions publicitaires vidéo, passe les annonces lorsque possible et masque certains emplacements promotionnels.">
+  <style>
+    :root{
+      --bg:#0f1115;
+      --panel:#171a21;
+      --panel2:#1f232c;
+      --text:#f6f7fb;
+      --muted:#9ba3b0;
+      --accent:#ff4d4d;
+      --line:#2b303a;
+      --ok:#7ee787;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,77,77,.12), transparent 28%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1100px,calc(100% - 32px));margin:auto}
+    nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:22px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .logo{
+      width:42px;height:42px;border-radius:12px;background:var(--accent);
+      display:grid;place-items:center;font-weight:900;letter-spacing:-4px;padding-right:4px
+    }
+    .navlinks{display:flex;gap:18px;color:var(--muted);font-size:14px}
+    .hero{
+      padding:72px 0 52px;
+      display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center
+    }
+    h1{font-size:clamp(44px,7vw,78px);line-height:.98;margin:0 0 20px;letter-spacing:-2px}
+    .lead{font-size:20px;color:#cbd1da;max-width:720px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+    .badge{
+      border:1px solid var(--line);background:rgba(255,255,255,.03);
+      border-radius:999px;padding:8px 12px;color:#c8ced8;font-size:13px
+    }
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:13px 18px;border-radius:11px;font-weight:700;border:1px solid var(--line)
+    }
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn.secondary{background:#151820}
+    .mock{
+      background:linear-gradient(180deg,#1c2028,#12151b);
+      border:1px solid var(--line);border-radius:24px;padding:20px;
+      box-shadow:0 24px 60px rgba(0,0,0,.35)
+    }
+    .popup{
+      background:#101114;border-radius:18px;padding:18px;border:1px solid #2a2e37
+    }
+    .row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #252a33}
+    .row:last-child{border-bottom:0}
+    .switch{
+      width:44px;height:25px;border-radius:99px;background:var(--accent);position:relative
+    }
+    .switch:after{content:"";width:19px;height:19px;background:white;border-radius:50%;position:absolute;right:3px;top:3px}
+    section{padding:62px 0}
+    .section-title{font-size:34px;margin:0 0 12px}
+    .section-sub{color:var(--muted);max-width:760px}
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px
+    }
+    .card{
+      background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px
+    }
+    .card h3{margin:0 0 8px}
+    .card p{color:var(--muted);margin:0}
+    .price{
+      background:linear-gradient(180deg,#1a1e26,#14171d);
+      border:1px solid var(--line);border-radius:22px;padding:30px;margin-top:28px;
+      display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center
+    }
+    .price strong{font-size:42px}
+    .price ul{padding-left:18px;color:#c7ccd5}
+    .price li{margin:7px 0}
+    .faq{display:grid;gap:12px;margin-top:24px}
+    details{
+      background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px
+    }
+    summary{cursor:pointer;font-weight:700}
+    details p{color:var(--muted)}
+    footer{
+      border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px
+    }
+    .legal{font-size:13px;color:var(--muted)}
+    .ok{color:var(--ok);font-weight:700}
+    @media (max-width:800px){
+      .hero{grid-template-columns:1fr;padding-top:38px}
+      .grid{grid-template-columns:1fr}
+      .price{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+  </style>
 </head>
-<body lang="fr-FR" dir="ltr"><p style="letter-spacing: -3.0pt; margin-bottom: 0cm">
-<span style="display: inline-block; border: none; padding: 0cm"><a href="#"><b>»»</b></a></span></p>
-<p style="margin-bottom: 0cm"><a href="#"><b>AdRush </b></a>
-</p>
-<p style="margin-bottom: 0cm"><font size="2" style="font-size: 10pt"><a href="#features">Fonctions</a>
-<a href="#pro">Pro</a> <a href="#faq">FAQ</a> <a href="#privacy">Confidentialité</a>
-</font>
-</p>
-<p><span style="display: inline-block; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.21cm; padding-bottom: 0.21cm; padding-left: 0.32cm; padding-right: 0cm"><font color="#c8ced8"><font size="2" style="font-size: 9pt"><span style="background: #ffffff">Extension
-Chrome • Manifest V3</span></font></font></span></p>
-<h1 class="western">Regarde tes vidéos.<br/>
-Pas les interruptions.</h1>
-<p class="lead">AdRush accélère automatiquement certaines
-interruptions publicitaires vidéo, les met en sourdine
-temporairement et clique sur « Passer » dès que le contrôle est
-disponible. 
-</p>
-<p style="margin-left: 0.58cm; margin-right: 0.58cm; margin-top: 0.58cm; margin-bottom: 0.58cm">
-<span style="display: inline-block; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.21cm; padding-bottom: 0.21cm; padding-left: 0.32cm; padding-right: 0cm"><font color="#c8ced8"><span style="background: #ffffff">⚡
-</span></font><font color="#c8ced8"><font size="2" style="font-size: 9pt"><span style="background: #ffffff">Jusqu’à
-×16</span></font></font></span> <span style="display: inline-block; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.21cm; padding-bottom: 0.21cm; padding-left: 0.32cm; padding-right: 0cm"><font color="#c8ced8"><span style="background: #ffffff">🔒
-</span></font><font color="#c8ced8"><font size="2" style="font-size: 9pt"><span style="background: #ffffff">Pas
-d’analytics</span></font></font></span> <span style="display: inline-block; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.21cm; padding-bottom: 0.21cm; padding-left: 0.32cm; padding-right: 0cm"><font color="#c8ced8"><span style="background: #ffffff">💻
-</span></font><font color="#c8ced8"><font size="2" style="font-size: 9pt"><span style="background: #ffffff">Données
-locales</span></font></font></span> <span style="display: inline-block; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.21cm; padding-bottom: 0.21cm; padding-left: 0.32cm; padding-right: 0cm"><font color="#c8ced8"><span style="background: #ffffff">🧩
-</span></font><font color="#c8ced8"><font size="2" style="font-size: 9pt"><span style="background: #ffffff">Chrome</span></font></font></span>
-</p>
-<p style="margin-top: 0.74cm"><a href="#pro">Découvrir AdRush Pro</a>
-<a href="#features">Voir les fonctions</a> 
-</p>
-<p style="letter-spacing: -3.0pt; margin-bottom: 0.21cm"><span style="display: inline-block; border: none; padding: 0cm"><b><span style="background: #101114">»»</span></b></span></p>
-<p style="margin-bottom: 0.21cm"><span style="display: inline-block; border: 1px solid #2a2e37; padding: 0.48cm"><strong><span style="background: #101114">AdRush</span></strong><span style="background: #101114">
-</span></span>
-</p>
-<p style="margin-bottom: 0.21cm"><span style="display: inline-block; border: 1px solid #2a2e37; padding: 0.48cm"><font color="#8e96a3"><font size="1" style="font-size: 8pt"><span style="background: #101114">Video
-Ad Accelerator</span></font></font></span></p>
-<p style="margin-bottom: 0cm"><span style="display: inline-block; border-top: none; border-bottom: 1px solid #252a33; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.37cm; padding-left: 0cm; padding-right: 0cm"><span style="background: #101114">Protection
-active</span></span></p>
-<p style="margin-bottom: 0cm"><span style="display: inline-block; border-top: none; border-bottom: 1px solid #252a33; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.37cm; padding-left: 0cm; padding-right: 0cm"><span style="background: #101114">Vitesse
-des annonces</span><strong><span style="background: #101114">×16</span></strong></span></p>
-<p style="margin-bottom: 0cm"><span style="display: inline-block; border-top: none; border-bottom: 1px solid #252a33; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.37cm; padding-left: 0cm; padding-right: 0cm"><span style="background: #101114">Masquer
-les promotions</span></span></p>
-<p><span style="display: inline-block; border-top: none; border-bottom: 1px solid #252a33; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.37cm; padding-left: 0cm; padding-right: 0cm"><span style="background: #101114">Temps
-économisé</span><strong><span style="background: #101114">1 h 42
-min</span></strong></span></p>
-<h2 class="western">Simple, rapide, sans usine à gaz.</h2>
-<p>AdRush se concentre sur une seule chose : réduire le temps perdu
-pendant les interruptions vidéo compatibles. 
-</p>
-<h3 class="western">Accélération automatique</h3>
-<p>Les interruptions détectées peuvent être accélérées à ×2,
-×4, ×8 ou ×16.</p>
-<h3 class="western">Passage automatique</h3>
-<p>Quand un bouton permettant de passer l’annonce est disponible,
-AdRush peut l’activer automatiquement.</p>
-<h3 class="western">Masquage optionnel</h3>
-<p>Certains emplacements promotionnels compatibles peuvent être
-masqués directement dans la page.</p>
-<h3 class="western">Compteur de temps</h3>
-<p>Une estimation locale te montre le temps économisé grâce à
-l’accélération.</p>
-<h3 class="western">Activation instantanée</h3>
-<p>Un interrupteur permet d’activer ou de désactiver AdRush
-immédiatement.</p>
-<h3 class="western">Vie privée</h3>
-<p>Pas de tracking comportemental, pas de revente de données et pas
-d’historique envoyé à nos serveurs.</p>
-<h2 class="western">AdRush Pro</h2>
-<p>Une licence à achat unique pour soutenir le développement et
-débloquer les fonctions premium au fil des mises à jour. 
-</p>
-<p style="margin-bottom: 0cm"><strong>3,99 €</strong> 
-</p>
-<p>Achat unique • licence personnelle</p>
-<ul>
-	<li><p style="margin-bottom: 0cm">Licence Pro permanente 
-	</p></li>
-	<li><p style="margin-bottom: 0cm">Fonctions premium ajoutées
-	progressivement 
-	</p></li>
-	<li><p style="margin-bottom: 0cm">Activation par clé de licence 
-	</p></li>
-	<li><p>Pas d’abonnement mensuel 
-	</p></li>
-</ul>
-<p><a href="#" onclick="alert('Le checkout Lemon Squeezy sera ajouté ici avant la mise en ligne.'); return false;">Acheter
-AdRush Pro </a>
-</p>
-<h2 class="western">FAQ</h2>
-<p>AdRush bloque-t-il 100 % des publicités ? 
-</p>
-<p>Non. Les sites vidéo changent régulièrement leur lecteur et
-leurs formats. AdRush accélère, masque ou passe uniquement les
-éléments qu’il peut détecter de manière compatible.</p>
-<p>AdRush est-il affilié à YouTube ou Google ? 
-</p>
-<p>Non. AdRush est un produit indépendant, non affilié, non
-approuvé et non sponsorisé par YouTube ou Google.</p>
-<p>Mes données sont-elles envoyées à un serveur ? 
-</p>
-<p>Les réglages et statistiques principales sont conservés
-localement. Une clé Pro peut être transmise au service de licence
-Lemon Squeezy uniquement pour activation et validation.</p>
-<p>Pourquoi une licence Pro ? 
-</p>
-<p>Elle permet de financer les mises à jour nécessaires quand les
-sites changent leur interface ou leur lecteur.</p>
-<h2 class="western">Confidentialité</h2>
-<p>AdRush ne collecte pas l’historique de navigation, les vidéos
-regardées, les cookies du compte ou les identifiants de connexion.
-Les préférences sont stockées localement dans Chrome. Lorsqu’une
-licence Pro est utilisée, la clé de licence et un identifiant
-d’activation peuvent être transmis à Lemon Squeezy pour vérifier
-la validité de la licence. Les données de paiement sont traitées
-par Lemon Squeezy et ne sont pas stockées par AdRush. 
-</p>
-<p>Contact support : <span style="font-variant: normal"><font color="#444746"><font face="Google Sans, Roboto"><font size="3" style="font-size: 13pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>adrushsupport@gmail.com</b></span></span></font></font></font></span>
-</p>
-<p style="margin-bottom: 0cm">© 2026 AdRush Produit indépendant •
-non affilié à YouTube ou Google 
-</p>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#">
+        <div class="logo">»»</div>
+        <span>AdRush</span>
+      </a>
+      <div class="navlinks">
+        <a href="#features">Fonctions</a>
+        <a href="#pro">Pro</a>
+        <a href="#faq">FAQ</a>
+        <a href="#privacy">Confidentialité</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="badge">Extension Chrome • Manifest V3</div>
+          <h1>Regarde tes vidéos.<br>Pas les interruptions.</h1>
+          <p class="lead">
+            AdRush accélère automatiquement certaines interruptions publicitaires vidéo,
+            les met en sourdine temporairement et clique sur « Passer » dès que le contrôle est disponible.
+          </p>
+          <div class="badges">
+            <span class="badge">⚡ Jusqu’à ×16</span>
+            <span class="badge">🔒 Pas d’analytics</span>
+            <span class="badge">💻 Données locales</span>
+            <span class="badge">🧩 Chrome</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#pro">Découvrir AdRush Pro</a>
+            <a class="btn secondary" href="#features">Voir les fonctions</a>
+          </div>
+        </div>
+
+        <div class="mock" aria-label="Aperçu de l'extension AdRush">
+          <div class="popup">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+              <div class="logo" style="width:36px;height:36px;border-radius:10px">»»</div>
+              <div>
+                <strong>AdRush</strong>
+                <div style="font-size:11px;color:#8e96a3">Video Ad Accelerator</div>
+              </div>
+            </div>
+            <div class="row"><span>Protection active</span><div class="switch"></div></div>
+            <div class="row"><span>Vitesse des annonces</span><strong>×16</strong></div>
+            <div class="row"><span>Masquer les promotions</span><div class="switch"></div></div>
+            <div class="row"><span>Temps économisé</span><strong>1 h 42 min</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <h2 class="section-title">Simple, rapide, sans usine à gaz.</h2>
+        <p class="section-sub">
+          AdRush se concentre sur une seule chose : réduire le temps perdu pendant les interruptions vidéo compatibles.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <h3>Accélération automatique</h3>
+            <p>Les interruptions détectées peuvent être accélérées à ×2, ×4, ×8 ou ×16.</p>
+          </div>
+          <div class="card">
+            <h3>Passage automatique</h3>
+            <p>Quand un bouton permettant de passer l’annonce est disponible, AdRush peut l’activer automatiquement.</p>
+          </div>
+          <div class="card">
+            <h3>Masquage optionnel</h3>
+            <p>Certains emplacements promotionnels compatibles peuvent être masqués directement dans la page.</p>
+          </div>
+          <div class="card">
+            <h3>Compteur de temps</h3>
+            <p>Une estimation locale te montre le temps économisé grâce à l’accélération.</p>
+          </div>
+          <div class="card">
+            <h3>Activation instantanée</h3>
+            <p>Un interrupteur permet d’activer ou de désactiver AdRush immédiatement.</p>
+          </div>
+          <div class="card">
+            <h3>Vie privée</h3>
+            <p>Pas de tracking comportemental, pas de revente de données et pas d’historique envoyé à nos serveurs.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pro">
+        <h2 class="section-title">AdRush Pro</h2>
+        <p class="section-sub">
+          Une licence à achat unique pour soutenir le développement et débloquer les fonctions premium au fil des mises à jour.
+        </p>
+        <div class="price">
+          <div>
+            <strong>3,99 €</strong>
+            <div style="color:var(--muted)">Achat unique • licence personnelle</div>
+            <ul>
+              <li>Licence Pro permanente</li>
+              <li>Fonctions premium ajoutées progressivement</li>
+              <li>Activation par clé de licence</li>
+              <li>Pas d’abonnement mensuel</li>
+            </ul>
+          </div>
+          <!-- Remplace ce lien par ton checkout Lemon Squeezy -->
+          <a class="btn primary" href="#" onclick="alert('Le checkout Lemon Squeezy sera ajouté ici avant la mise en ligne.'); return false;">
+            Acheter AdRush Pro
+          </a>
+        </div>
+      </section>
+
+      <section id="faq">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary>AdRush bloque-t-il 100 % des publicités ?</summary>
+            <p>Non. Les sites vidéo changent régulièrement leur lecteur et leurs formats. AdRush accélère, masque ou passe uniquement les éléments qu’il peut détecter de manière compatible.</p>
+          </details>
+          <details>
+            <summary>AdRush est-il affilié à YouTube ou Google ?</summary>
+            <p>Non. AdRush est un produit indépendant, non affilié, non approuvé et non sponsorisé par YouTube ou Google.</p>
+          </details>
+          <details>
+            <summary>Mes données sont-elles envoyées à un serveur ?</summary>
+            <p>Les réglages et statistiques principales sont conservés localement. Une clé Pro peut être transmise au service de licence Lemon Squeezy uniquement pour activation et validation.</p>
+          </details>
+          <details>
+            <summary>Pourquoi une licence Pro ?</summary>
+            <p>Elle permet de financer les mises à jour nécessaires quand les sites changent leur interface ou leur lecteur.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="privacy">
+        <h2 class="section-title">Confidentialité</h2>
+        <p class="legal">
+          AdRush ne collecte pas l’historique de navigation, les vidéos regardées, les cookies du compte ou les identifiants de connexion.
+          Les préférences sont stockées localement dans Chrome. Lorsqu’une licence Pro est utilisée, la clé de licence et un identifiant
+          d’activation peuvent être transmis à Lemon Squeezy pour vérifier la validité de la licence. Les données de paiement sont traitées
+          par Lemon Squeezy et ne sont pas stockées par AdRush.
+        </p>
+        <p class="legal">
+          Contact support : <strong>adrushsupport@gmail.com</strong>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span>© 2026 AdRush</span>
+        <span>Produit indépendant • non affilié à YouTube ou Google</span>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
